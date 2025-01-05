@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Listings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f5f7;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #5d9cec;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        .container {
+            margin: 2rem auto;
+            padding: 1rem;
+            max-width: 800px;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .job {
+            border-bottom: 1px solid #ddd;
+            padding: 1rem 0;
+        }
+        .job:last-child {
+            border-bottom: none;
+        }
+        .job h2 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.2rem;
+            color: #5d9cec;
+        }
+        .job .details {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        .job .details span {
+            margin-right: 1rem;
+        }
+        .job a {
+            display: inline-block;
+            margin-top: 0.5rem;
+            color: white;
+            background-color: #5d9cec;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+        .job a:hover {
+            background-color: #4a8ad4;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Job Listings</h1>
+    </header>
+    <div class="container" id="jobs-container">
+        <!-- Jobs will be dynamically loaded here -->
+    </div>
+
+    <script>
+        fetch('jobs.json')
+            .then(response => response.json())
+            .then(jobsData => {
+                const jobsContainer = document.getElementById('jobs-container');
+
+                jobsData.forEach(job => {
+                    const jobElement = document.createElement('div');
+                    jobElement.classList.add('job');
+
+                    jobElement.innerHTML = `
+                        <h2>${job.Title}</h2>
+                        <div class="details">
+                            <span><strong>Company:</strong> ${job.Company}</span>
+                            <span><strong>Location:</strong> ${job.Location}</span>
+                            <span><strong>Date:</strong> ${job.Date}</span>
+                        </div>
+                        <a href="${job.Link}" target="_blank">View Job</a>
+                    `;
+
+                    jobsContainer.appendChild(jobElement);
+                });
+            })
+            .catch(error => {
+                console.error('Error loading jobs:', error);
+            });
+    </script>
+</body>
+</html>
