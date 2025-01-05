@@ -7,27 +7,28 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f2f5f7;
-            color: #333;
+            background-color: #e9f1f5; /* Soft light blue */
+            color: #4a4a4a; /* Dark gray text for readability */
             margin: 0;
             padding: 0;
         }
         header {
-            background-color: #5d9cec;
+            background-color: #7cb8d6; /* Muted blue */
             color: white;
             padding: 1rem;
             text-align: center;
+            border-bottom: 3px solid #a4c9e3; /* Subtle border */
         }
         .container {
             margin: 2rem auto;
             padding: 1rem;
             max-width: 800px;
             background: white;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* Soft shadow */
             border-radius: 8px;
         }
         .job {
-            border-bottom: 1px solid #ddd;
+            border-bottom: 1px solid #f0f5f7; /* Light gray for separation */
             padding: 1rem 0;
         }
         .job:last-child {
@@ -36,11 +37,11 @@
         .job h2 {
             margin: 0 0 0.5rem 0;
             font-size: 1.2rem;
-            color: #5d9cec;
+            color: #5b8a9f; /* Muted, calming blue */
         }
         .job .details {
             font-size: 0.9rem;
-            color: #666;
+            color: #7a7a7a; /* Soft gray */
         }
         .job .details span {
             margin-right: 1rem;
@@ -49,13 +50,14 @@
             display: inline-block;
             margin-top: 0.5rem;
             color: white;
-            background-color: #5d9cec;
+            background-color: #a4c9e3; /* Soft blue */
             text-decoration: none;
             padding: 0.5rem 1rem;
             border-radius: 4px;
+            transition: background-color 0.3s ease;
         }
         .job a:hover {
-            background-color: #4a8ad4;
+            background-color: #7cb8d6; /* Slightly darker blue on hover */
         }
     </style>
 </head>
@@ -85,6 +87,7 @@
                             <span><strong>Date:</strong> ${job.Date}</span>
                         </div>
                         <a href="${job.Link}" target="_blank">View Job</a>
+                        <p>${job.Content}</p> <!-- New content field -->
                     `;
 
                     jobsContainer.appendChild(jobElement);
